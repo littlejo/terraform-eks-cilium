@@ -4,6 +4,7 @@
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | > 1.4 |
 | <a name="requirement_aws"></a> [aws](#requirement\_aws) | > 5.0 |
+| <a name="requirement_helm"></a> [helm](#requirement\_helm) | > 2.0 |
 
 ## Providers
 
@@ -32,11 +33,11 @@
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_azs"></a> [azs](#input\_azs) | n/a | `list(string)` | <pre>[<br>  "us-east-1a",<br>  "us-east-1b"<br>]</pre> | no |
-| <a name="input_cidr"></a> [cidr](#input\_cidr) | n/a | `string` | `"10.0.0.0/16"` | no |
-| <a name="input_cluster_name"></a> [cluster\_name](#input\_cluster\_name) | n/a | `string` | `"terraform-cilium"` | no |
-| <a name="input_cluster_version"></a> [cluster\_version](#input\_cluster\_version) | n/a | `string` | `"1.27"` | no |
-| <a name="input_vpc_name"></a> [vpc\_name](#input\_vpc\_name) | n/a | `string` | `"eks"` | no |
+| <a name="input_azs"></a> [azs](#input\_azs) | List of availability zones to install eks | `list(string)` | <pre>[<br>  "us-east-1a",<br>  "us-east-1b"<br>]</pre> | no |
+| <a name="input_cidr"></a> [cidr](#input\_cidr) | VPC CIDR | `string` | `"10.0.0.0/16"` | no |
+| <a name="input_cluster_name"></a> [cluster\_name](#input\_cluster\_name) | EKS cluster name | `string` | `"terraform-cilium"` | no |
+| <a name="input_cluster_version"></a> [cluster\_version](#input\_cluster\_version) | kubernetes cluster version | `string` | `"1.27"` | no |
+| <a name="input_vpc_name"></a> [vpc\_name](#input\_vpc\_name) | VPC name | `string` | `"eks"` | no |
 
 ## Outputs
 
