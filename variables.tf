@@ -27,3 +27,9 @@ variable "cluster_version" {
   type        = string
   default     = "1.27"
 }
+
+variable "install_cilium" {
+  description = "Do you want to install cilium"
+  type        = bool
+  default     = true
+}

@@ -14,6 +14,14 @@ locals {
       }
     }
   }
+
+  taints_cilium = {
+    cilium = {
+      key    = "node.cilium.io/agent-not-ready"
+      value  = "true"
+      effect = "NO_EXECUTE"
+    }
+  }
 }
 
 data "aws_eks_cluster_auth" "this" {
@@ -52,13 +60,7 @@ module "eks" {
 
   eks_managed_node_group_defaults = {
     instance_types = ["t3.medium"]
-    taints = {
-      cilium = {
-        key    = "node.cilium.io/agent-not-ready"
-        value  = "true"
-        effect = "NO_EXECUTE"
-      }
-    }
+    taints         = var.install_cilium ? local.taints_cilium : {}
   }
 
   eks_managed_node_groups = {
@@ -71,6 +73,7 @@ module "eks" {
 }
 
 module "kubeconfig" {
+  count  = var.install_cilium ? 1 : 0
   source = "github.com/mvachhar/terraform-kubernetes-kubeconfig?ref=no-experiment"
 
   current_context = "eks"
@@ -92,6 +95,7 @@ module "kubeconfig" {
 }
 
 resource "terraform_data" "cilium_patch" {
+  count = var.install_cilium ? 1 : 0
   provisioner "local-exec" {
     command = "kubectl -n kube-system patch daemonset aws-node --type='strategic' -p='${jsonencode(local.cilium_patch)}'"
     environment = {
@@ -102,6 +106,7 @@ resource "terraform_data" "cilium_patch" {
 }
 
 module "cilium" {
+  count  = var.install_cilium ? 1 : 0
   source = "github.com/terraform-helm/terraform-helm-cilium?ref=v0.3"
   set_values = concat([
     {
