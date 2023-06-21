@@ -74,7 +74,7 @@ module "eks" {
 
 module "kubeconfig" {
   count  = var.install_cilium ? 1 : 0
-  source = "github.com/mvachhar/terraform-kubernetes-kubeconfig?ref=no-experiment"
+  source = "github.com/littlejo/terraform-kubernetes-kubeconfig?ref=no-experiment"
 
   current_context = "eks"
   clusters = [{
