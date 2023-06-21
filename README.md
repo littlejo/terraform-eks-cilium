@@ -19,7 +19,7 @@
 |------|--------|---------|
 | <a name="module_cilium"></a> [cilium](#module\_cilium) | github.com/terraform-helm/terraform-helm-cilium | v0.3 |
 | <a name="module_eks"></a> [eks](#module\_eks) | terraform-aws-modules/eks/aws | ~> 19.0 |
-| <a name="module_kubeconfig"></a> [kubeconfig](#module\_kubeconfig) | github.com/mvachhar/terraform-kubernetes-kubeconfig | no-experiment |
+| <a name="module_kubeconfig"></a> [kubeconfig](#module\_kubeconfig) | github.com/littlejo/terraform-kubernetes-kubeconfig | no-experiment |
 | <a name="module_vpc"></a> [vpc](#module\_vpc) | terraform-aws-modules/vpc/aws | v5.0.0 |
 
 ## Resources
@@ -37,10 +37,11 @@
 | <a name="input_cidr"></a> [cidr](#input\_cidr) | VPC CIDR | `string` | `"10.0.0.0/16"` | no |
 | <a name="input_cluster_name"></a> [cluster\_name](#input\_cluster\_name) | EKS cluster name | `string` | `"terraform-cilium"` | no |
 | <a name="input_cluster_version"></a> [cluster\_version](#input\_cluster\_version) | kubernetes cluster version | `string` | `"1.27"` | no |
+| <a name="input_install_cilium"></a> [install\_cilium](#input\_install\_cilium) | Do you want to install cilium | `bool` | `true` | no |
 | <a name="input_vpc_name"></a> [vpc\_name](#input\_vpc\_name) | VPC name | `string` | `"eks"` | no |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| <a name="output_update_kubeconfig"></a> [update\_kubeconfig](#output\_update\_kubeconfig) | n/a |
+| <a name="output_update_kubeconfig"></a> [update\_kubeconfig](#output\_update\_kubeconfig) | Command to launch to use kubectl |
