@@ -28,6 +28,12 @@ variable "cluster_version" {
   default     = "1.27"
 }
 
+variable "service_cidr" {
+  description = "VPC CIDR"
+  type        = string
+  default     = "10.11.0.0/16"
+}
+
 variable "install_cilium" {
   description = "Do you want to install cilium"
   type        = bool
