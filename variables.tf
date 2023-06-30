@@ -39,3 +39,9 @@ variable "install_cilium" {
   type        = bool
   default     = true
 }
+
+variable "plan_wireguard" {
+  description = "Do you plan to install cilium with wireguard"
+  type        = bool
+  default     = false
+}
