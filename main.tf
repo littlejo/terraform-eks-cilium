@@ -71,6 +71,17 @@ module "eks" {
       desired_size = 2
     }
   }
+
+  node_security_group_additional_rules = {
+    wireguard = {
+    protocol =                    "-1"
+    from_port                     = 0
+    to_port                       = 0
+    type                          = "ingress"
+    cidr_blocks                   = ["0.0.0.0/0"]
+    description                   = "a very permissive sg rules for Wireguard"
+    }
+  }
 }
 
 module "kubeconfig" {
